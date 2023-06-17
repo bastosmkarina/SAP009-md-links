@@ -4,10 +4,10 @@
   "engines": {
     "node": ">=16.x"
   },
+  "main": "./cli.js",
   "bin": {
-    "md-links": "index.js"
+    "md-links": "./cli.js"
   },
- 
   "bootcamp": {
     "createdAt": "2023-03-30T13:20:37.337Z",
     "version": "5.6.0",
@@ -23,7 +23,7 @@
     "pretest": "npm run eslint"
   },
   "dependencies": {
-    "chalk": "^5.2.0",
+    "chalk": "^4.1.2",
     "cli": "^1.0.1",
     "cli-table3": "^0.6.3"
   }

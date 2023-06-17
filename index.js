@@ -1,12 +1,28 @@
 const fs = require("fs");
 
-function validar(links) {
-  links.forEach((link) => { 
-    fetch(link.url)
-    .then((response) => console.log(link.text, response.status))
-    .catch((error) => console.log(link.text, error.message))
+function validar(links, resolve) {
+  const promessas = links.map((link) => { 
+    return fetch(link.url)
+    .then((response) => {
+      link.status = response.status;
+      link.ok = 'ok'
+      if(link.status >= 400) {
+        link.ok = 'fail'
+      }
+      return link;
+    })
+    .catch((error) => {
+      link.status = 'erro'
+      link.ok = 'fail'
+      return link;
+    })
+  })
+  Promise.all(promessas)
+  .then((result) => {
+    resolve(result);
   })
 }
+
 
 function mdLinks(path, options) {
   return new Promise((resolve, reject) => {
@@ -25,9 +41,10 @@ function mdLinks(path, options) {
          links.push({ text, url, pathlink});  
       } 
       if(options) {
-        validar(links);
+        validar(links, resolve);
+      } else {
+        resolve(links);
       }
-      resolve(links);
     };
   });
 });
