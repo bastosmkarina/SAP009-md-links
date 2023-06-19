@@ -50,4 +50,4 @@ function mdLinks(path, options) {
 });
 }
 
-module.exports = { mdLinks };
+module.exports = { mdLinks, validar };
