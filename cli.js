@@ -9,10 +9,13 @@ mdLinks(archivePath, validateLink)
 .then((links) => {
   links.forEach(link => {
     if(validateLink){
-      console.log(chalk.blue(link.text), link.url, link.pathlink, link.status, link.ok);
+      if (link.ok === 'ok') {
+        console.log(chalk.green(link.status), chalk.green(link.ok), link.text, link.url, link.pathlink);
+      } else if (link.ok === 'fail') {
+        console.log( chalk.red(link.status), chalk.red(link.ok), link.text, link.url, link.pathlink);
+      }
     } else {
       console.log(link.text, link.url, link.pathlink);
     }
   });
 });
-

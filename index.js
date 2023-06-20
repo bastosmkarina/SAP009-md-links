@@ -11,7 +11,7 @@ function validar(links, resolve) {
       }
       return link;
     })
-    .catch((error) => {
+    .catch((erro) => {
       link.status = 'erro'
       link.ok = 'fail'
       return link;
@@ -28,7 +28,7 @@ function mdLinks(path, options) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, "utf-8", (error, data) => {
       if (error) {
-        reject(new error ('Nenhum link encontrado' + error));
+        reject(new Error ('Nenhum link encontrado' + error));
         return;
       } else {
       const regex = /\[(.*?)\]\((.*?)\)/g;
