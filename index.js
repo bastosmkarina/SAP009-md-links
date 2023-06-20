@@ -1,28 +1,5 @@
 const fs = require("fs");
-
-function validar(links, resolve) {
-  const promessas = links.map((link) => { 
-    return fetch(link.url)
-    .then((response) => {
-      link.status = response.status;
-      link.ok = 'ok'
-      if(link.status >= 400) {
-        link.ok = 'fail'
-      }
-      return link;
-    })
-    .catch((erro) => {
-      link.status = 'erro'
-      link.ok = 'fail'
-      return link;
-    })
-  })
-  Promise.all(promessas)
-  .then((result) => {
-    resolve(result);
-  })
-}
-
+const modulovalidar = require("./validar");
 
 function mdLinks(path, options) {
   return new Promise((resolve, reject) => {
@@ -41,7 +18,7 @@ function mdLinks(path, options) {
          links.push({ text, url, pathlink});  
       } 
       if(options) {
-        validar(links, resolve);
+        modulovalidar.validar(links, resolve);
       } else {
         resolve(links);
       }
@@ -50,4 +27,4 @@ function mdLinks(path, options) {
 });
 }
 
-module.exports = { mdLinks, validar };
+module.exports = { mdLinks };
