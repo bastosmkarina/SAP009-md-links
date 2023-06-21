@@ -20,7 +20,7 @@ describe('Testes da função mdLinks', () => {
   });
 
   it('deve chamar a função validar se a opção for fornecida', async () => {
-    const path = './files/empty.md';
+    const path = './files/file.md';
     const options = true;
   
     await mdLinks(path, options);
