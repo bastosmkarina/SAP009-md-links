@@ -11,7 +11,7 @@
 ## 1. Como usar 
 
 1. Instalar
-( digite no terminal: npm i md-links-bastosmkarina )
+( digite no terminal: npm i md-links-bastoskarina )
 
 2. Tenha acesso aos links disponíveis 
 (Digite no terminal o comando: node cli.js ./files/file.md) 
