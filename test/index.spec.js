@@ -23,9 +23,21 @@ describe('Testes da função mdLinks', () => {
     const path = './files/file.md';
     const options = true;
   
+    // Simulando a função modulovalidar.validar
+    const validarMock = jest.spyOn(modulovalidar, 'validar');
+    validarMock.mockImplementation((links, resolve) => {
+      // Aqui você pode definir o comportamento esperado da função validar simulada
+      // por exemplo, resolver a promessa com um valor específico
+      resolve('Resultado da função validar');
+    });
+  
     await mdLinks(path, options);
+  
+    expect(validarMock).toHaveBeenCalled();
+  });
 
-    expect(modulovalidar.validar).toHaveBeenCalled(1);
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
 });
