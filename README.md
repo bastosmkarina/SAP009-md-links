@@ -25,7 +25,7 @@
 
 ## 2. Testes
 
-<img src="readme-images/testsmdlinks.jpg>
+<img src="readme-images/testsmdlinks.jpg">
 
 ## 3. Developer
 
