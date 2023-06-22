@@ -1,8 +1,8 @@
 const { validar } = require('../validar.js');
 
-describe('Testes da função validar', () => {
+describe('validar', () => {
 
-  it('deve retornar link ok, caso o status seja menor que 400', () => {
+  it('should return link ok if the status is less than 400', () => {
     const links = [
       { url: 'https://www.google.com', status: null, ok: null },
       { url: 'https://www.github.com', status: null, ok: null },
@@ -22,7 +22,7 @@ describe('Testes da função validar', () => {
     validar(links, resolverMock);
   });
   
-  it('deve retornar link fail, caso o status seja maior ou igual a 400', () => {
+  it('should return link fail if the status is greater than or equal to 400', () => {
     const links = [
       { url: 'https://www.google.com', status: null, ok: null },
       { url: 'https://www.github.com', status: null, ok: null },
@@ -42,7 +42,7 @@ describe('Testes da função validar', () => {
     validar(links, resolverMock);
   });
 
-  it('deve retornar link fail, caso o link esteja quebrado', () => {
+  it('should return link fail if the link is broken', () => {
     const links = [
       { url: 'https://www.google.com', status: null, ok: null },
       { url: 'https://www.github.com', status: null, ok: null },
